@@ -5,7 +5,7 @@ import { MemberComponent } from './member.component';
 
 @NgModule({
     imports: [RouterModule.forChild([
-        {path: 'member', component: MemberComponent}
+        {path: 'list', component: MemberComponent}
     ])],
     exports: [RouterModule]
 })
