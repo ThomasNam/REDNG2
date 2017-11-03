@@ -1,3 +1,3 @@
-<p>
-  member works!
-</p>
+  <div *ngFor='let m of members' highlight (mouseover)="setAge(m.name)">
+      {{m.name}} {{m.age}}
+  </div>

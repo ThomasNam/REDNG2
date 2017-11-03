@@ -9,6 +9,8 @@ export class IntroComponent implements OnInit {
 
   constructor() { }
 
+  title = "반갑습니다! Core Module!!"
+
   ngOnInit() {
   }
 

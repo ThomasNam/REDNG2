@@ -3,22 +3,29 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { CoreModule } from './core/core-module';
+import { SharedModule } from './shared/shared.module';
+
 import { AppComponent } from './app.component';
 import { IntroComponent } from './intro/intro.component';
-import { MemberComponent } from './member/member.component';
+//import { MemberModule } from './member/member.module';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IntroComponent,
-    MemberComponent
+    IntroComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
+    // 핵심 모듈을 로드한다.
+    CoreModule.forRoot({nickName: 'Happy'}),
+    SharedModule
+    //,MemberModule
   ],
   providers: [],
   bootstrap: [AppComponent]
