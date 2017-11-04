@@ -14,6 +14,28 @@
   </div>
 <br><br><br>
 
+
+<!--<form [formGroup]="form" (submit) = "submitForm($event)">
+	<input formControlName ="user_id" pattern="[a-zA-Z0-9]+">
+  <button type = "submit" [disabled]="!form.valid">전송</button>
+</form>-->
+
+<form #f = "ngForm">
+아이디 : <input type = "text" [(ngModel)] = "user.userId" #userId = "ngModel" name = 'userid' placeholder="2-10글자" pattern="^[a-z][a-z0-9]{1,9}" required> {{userId.valid}}<br>
+이름 : <input type = "text" [(ngModel)] = "user.userName" #userName = "ngModel" name = 'userName' placeholder="2-5글자" pattern="^[a-z][a-z0-9]{1,5}" required> {{userName.valid}}<br/>
+패스워드 : <input type = "password" [(ngModel)] = "user.password" #userPasswd = "ngModel" placeholder="2-5글자" pattern="^[a-z][a-z0-9]{1,5}" [ngModelOptions]="{standalone:true}" required> {{userPasswd.valid}}
+
+<wiki-promise-cmp></wiki-promise-cmp>
+
+<div *ngIf = "f.valid">
+  {{f.value|json}}
+</div>
+</form>
+
+  신뢰할 수 있는 URL : <a [href]="trustURL">연결</a><Br>
+  신뢰할 수 있는 URL : <a [href]="transToTrustURL('https://angular.io')">연결</a><Br>
+
+
 <div [mystyle]="'Lavender'" [myfontsize]="'30px'">아웅 살수가 없다.</div>
 
   <div>

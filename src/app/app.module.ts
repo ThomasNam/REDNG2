@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api'
+import { PersonData } from './person-data'
 
 import { CoreModule } from './core/core-module';
 import { SharedModule } from './shared/shared.module';
@@ -24,13 +25,16 @@ import { AppRoutingModule, appRoutingProviders } from './app-routing.module';
     FormsModule,
     HttpModule,
     AppRoutingModule,
+
+    
         
     // 핵심 모듈을 로드한다.
     CoreModule.forRoot({nickName: 'Happy'}),
     SharedModule,
 
-    ChildModule
+    ChildModule,
     //,MemberModule
+    InMemoryWebApiModule.forRoot(PersonData)
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]

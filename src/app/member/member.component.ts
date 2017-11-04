@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NgForm, FormGroup, FormControl, Validator } from '@angular/forms';
+import { SafeUrl, SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { MemberService, Member } from './member.service'
+
 
 @Component({
   selector: 'app-member',
@@ -19,15 +21,32 @@ export class MemberComponent implements OnInit {
 
   msg: string = "행복한 하루 되세요"
 
-  constructor(private memberService: MemberService) { }
+  user = {userId:"", userName:"", password:""};
+
+  trustURL: SafeUrl;
+  trustHTML: SafeHtml;
+
+  constructor(private memberService: MemberService, private _sanitizer: DomSanitizer) 
+  {
+    this.trustURL = this._sanitizer.bypassSecurityTrustUrl("javascript:alert('hello')");
+    this.trustHTML = this._sanitizer.bypassSecurityTrustHtml("<b>test</b>");
+  }
+
+  transToTrustURL (url:string)
+  {
+    return this._sanitizer.bypassSecurityTrustUrl(url);
+  }
 
   ngOnInit() 
   {
     this.memberService.getMembers().then (members => {
       this.members = members;
     });
-
   }
+
+  form = new FormGroup({
+
+  });
 
   setAge(name: string)
   {
