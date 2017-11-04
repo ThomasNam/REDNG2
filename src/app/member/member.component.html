@@ -1,3 +1,30 @@
   <div *ngFor='let m of members' highlight (mouseover)="setAge(m.name)">
       {{m.name}} {{m.age}}
   </div>
+
+  <div>
+    {{name}}
+    <br>
+    <input type = 'text' [value] = "name">
+
+    <br>
+
+    <contactinput (save)="onSave($event)"></contactinput>
+   
+  </div>
+<br><br><br>
+
+<div [mystyle]="'Lavender'" [myfontsize]="'30px'">아웅 살수가 없다.</div>
+
+  <div>
+    <button (click)="toggleBtn()">토글 {{active?'활성화':'비활성화'}}</button>
+    <button [ngClass]="myClass" my-click>버튼1</button>
+    <button [ngClass]="myClass" [one]="'-_-'" msg = '추가메시지'>버튼2</button>
+
+
+    <button myDirective [inputValue]="msg" staticValue = "안녕하세요" (complete)="onComplete($event)">인사말 출력</button>
+    <button (click)="modifyMsg()">인사말 수정</button>
+  </div>
+
+  <app-sync></app-sync>
+  

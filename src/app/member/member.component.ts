@@ -15,6 +15,10 @@ export class MemberComponent implements OnInit {
   
   name: string;
 
+  active: boolean = true;
+
+  msg: string = "행복한 하루 되세요"
+
   constructor(private memberService: MemberService) { }
 
   ngOnInit() 
@@ -33,4 +37,30 @@ export class MemberComponent implements OnInit {
     });
   }
 
+  get myClass()
+  {
+      return this.active ? "button" : "";
+  }
+
+  toggleBtn()
+  {
+    this.active = !this.active;
+  }
+
+  onSave(data)
+  {
+    alert ("데이터 : " + data);
+
+    console.log (data);
+  }
+
+  modifyMsg()
+  {
+    this.msg = "아흑";
+  }
+
+  onComplete(val)
+  {
+    console.log ("완료 : " + val);
+  }
 }
